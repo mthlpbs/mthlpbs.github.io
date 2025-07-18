@@ -13,16 +13,30 @@ import { parseXMLData } from './utils/xmlParser'
 function App() {
   const [personalData, setPersonalData] = useState(null)
   const [loading, setLoading] = useState(true)
+  const [error, setError] = useState(null)
 
   useEffect(() => {
     const loadData = async () => {
       try {
+        console.log('Attempting to fetch XML data...')
         const response = await fetch('/info.xml')
+        console.log('Response status:', response.status)
+        
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`)
+        }
+        
         const xmlText = await response.text()
+        console.log('XML text length:', xmlText.length)
+        console.log('XML text preview:', xmlText.substring(0, 200))
+        
         const data = parseXMLData(xmlText)
+        console.log('Parsed data:', data)
         setPersonalData(data)
       } catch (error) {
         console.error('Error loading personal data:', error)
+        console.error('Error details:', error.message)
+        setError(error.message)
       } finally {
         setLoading(false)
       }
@@ -46,7 +60,11 @@ function App() {
   if (!personalData) {
     return (
       <div className="min-h-screen bg-white flex items-center justify-center">
-        <p className="text-xl text-apple-gray-600">Error loading data</p>
+        <div className="text-center">
+          <p className="text-xl text-apple-gray-600 mb-4">Error loading data</p>
+          {error && <p className="text-red-500 text-sm">Details: {error}</p>}
+          <p className="text-gray-500 text-sm mt-2">Check the browser console for more details</p>
+        </div>
       </div>
     )
   }

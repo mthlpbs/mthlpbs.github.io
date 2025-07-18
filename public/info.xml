@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<personalInfo xmlns="http://mthlpbs.github.io/config"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="http://mthlpbs.github.io/config ./info.xsd">
+    
+    <name>Mithila Prabashwara</name>
+    <birth>2001-10-07</birth>
+    <email>asuramanna.mithilaprabashwara@gmail.com</email>
+    
+    <location>
+        <city>Mirigama</city>
+        <country>Sri Lanka</country>
+    </location>
+    
+    <title>SE Undergraduate</title>
+    
+    <social>
+        <linkedin>https://www.linkedin.com/in/mithilaprabashwara/</linkedin>
+        <github>https://github.com/mthlpbs/</github>
+        <github>https://github.com/asurpbs/</github>
+        <portfolio>https://mthlpbs.github.io/</portfolio>
+    </social>
+    
+    <skills>
+        <programmingLanguages>
+            <skill>Python</skill>
+            <skill>Java</skill>
+            <skill>C</skill>
+            <skill>JavaScript</skill>
+            <skill>TypeScript</skill>
+        </programmingLanguages>
+        <webTechnologies>
+            <skill>HTML5</skill>
+            <skill>CSS3</skill>
+            <skill>React</skill>
+            <skill>Node.js</skill>
+            <skill>Express.js</skill>
+        </webTechnologies>
+        <databases>
+            <skill>MongoDB</skill>
+            <skill>MySQL</skill>
+            <skill>PostgreSQL</skill>
+        </databases>
+        <toolsPlatforms>
+            <skill>Git</skill>
+            <skill>Docker</skill>
+            <skill>AWS</skill>
+            <skill>Azure</skill>
+            <skill>Linux</skill>
+        </toolsPlatforms>
+        <other>
+            <skill>UI/UX Design</skill>
+            <skill>Machine Learning</skill>
+        </other>
+    </skills>
+    
+    <education>
+        <education>
+            <institution>Saegis Campus Nugegoda</institution>
+            <degree>Bachelor of Science in Software Engineering</degree>
+            <graduation>2027</graduation>
+            <gpa>3.84/4.0 (Sophomore)</gpa>
+        </education>
+    </education>
+    
+    <projects>
+        <project>
+            <name>Library Management System</name>
+            <description>A comprehensive library management system with a user-friendly graphical interface, offering all the essential features of a traditional library management solution for small scale libraries. Built with Java and featuring book cataloging, member management, and borrowing systems.</description>
+            <technologies>
+                <technology>Java</technology>
+                <technology>JavaFX</technology>
+                <technology>SQLite</technology>
+            </technologies>
+            <github>https://github.com/mthlpbs/Library-Management-System</github>
+        </project>
+        <project>
+            <name>Portfolio Website</name>
+            <description>A modern, responsive portfolio website built with React and Tailwind CSS. Features smooth animations, XML data parsing, and deployment to GitHub Pages with automated CI/CD pipeline.</description>
+            <technologies>
+                <technology>React</technology>
+                <technology>JavaScript</technology>
+                <technology>Tailwind CSS</technology>
+                <technology>Vite</technology>
+                <technology>Framer Motion</technology>
+            </technologies>
+            <github>https://github.com/mthlpbs/mthlpbs.github.io</github>
+            <demo>https://mthlpbs.github.io</demo>
+        </project>
+    </projects>
+    
+    <languages>
+        <language>
+            <language>Sinhala</language>
+            <proficiency>Native</proficiency>
+        </language>
+        <language>
+            <language>English</language>
+            <proficiency>Fluent</proficiency>
+        </language>
+    </languages>
+    
+    <interests>
+        <interest>Open Source Development</interest>
+        <interest>Machine Learning</interest>
+        <interest>Artificial Intelligence</interest>
+        <interest>Software Development</interest>
+        <interest>Reading Tech Blogs</interest>
+        <interest>Problem Solving</interest>
+    </interests>
+    
+    <availability>
+        <status>Available for new opportunities</status>
+        <preferredRoles>
+            <role>ML Engineer</role>
+            <role>Software Engineer</role>
+            <role>Full Stack Developer</role>
+            <role>Frontend Developer</role>
+        </preferredRoles>
+        <workType>
+            <type>Remote</type>
+            <type>Hybrid</type>
+            <type>On-site</type>
+        </workType>
+    </availability>
+    
+</personalInfo>

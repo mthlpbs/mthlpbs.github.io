@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
-           targetNamespace="http://portfolio.mithilaprabashwara.com/personal"
-           xmlns:tns="http://portfolio.mithilaprabashwara.com/personal"
+           targetNamespace="http://mthlpbs.github.io/config"
+           xmlns:tns="http://mthlpbs.github.io/config"
            elementFormDefault="qualified">
 
     <!-- Root element -->

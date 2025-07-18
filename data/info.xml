@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<personalInfo xmlns="http://mthlpbs.github.io/config"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="http://mthlpbs.github.io/config ../config/info.xsd">
+    
+    <name>Mithila Prabashwara</name>
+    <birth>2001-10-07</birth>
+    <email>mithila.prabashwara@example.com</email>
+    
+    <location>
+        <city>Mirigama</city>
+        <country>Sri Lanka</country>
+    </location>
+    
+    <title>Full Stack Developer</title>
+    
+    <social>
+        <linkedin>https://www.linkedin.com/in/mithilaprabashwara/</linkedin>
+        <github>https://github.com/mthlpbs/</github>
+        <twitter>https://x.com/mithila_dev</twitter>
+        <portfolio>https://mthlpbs.github.io/</portfolio>
+    </social>
+    
+    <skills>
+        <skill>JavaScript</skill>
+        <skill>Python</skill>
+        <skill>Java</skill>
+        <skill>HTML5</skill>
+        <skill>MongoDB</skill>
+        <skill>MySQL</skill>
+        <skill>Git</skill>
+        <skill>Docker</skill>
+        <skill>AWS</skill>
+        <skill>Azure</skill>
+    </skills>
+    
+    <education>
+        <education>
+            <institution>Saegis Campus Nugegoda</institution>
+            <degree>Bachelor of Science in Software Engineering</degree>
+            <graduation>2027</graduation>
+            <gpa>3.8/4.0</gpa>
+        </education>
+    </education>
+    
+    <projects>
+        <project>
+            <name>E-commerce Platform</name>
+            <description>Full-stack e-commerce solution with payment integration</description>
+            <technologies>
+                <technology>React</technology>
+                <technology>Node.js</technology>
+                <technology>MongoDB</technology>
+                <technology>Stripe API</technology>
+            </technologies>
+            <github>https://github.com/mithilaprabashwara/ecommerce-platform</github>
+            <demo>https://ecommerce-demo.com</demo>
+        </project>
+        <project>
+            <name>Task Management App</name>
+            <description>Collaborative task management application with real-time updates</description>
+            <technologies>
+                <technology>Vue.js</technology>
+                <technology>Firebase</technology>
+                <technology>Socket.io</technology>
+            </technologies>
+            <github>https://github.com/mithilaprabashwara/task-manager</github>
+            <demo>https://task-manager-demo.com</demo>
+        </project>
+    </projects>
+    
+    <languages>
+        <language>
+            <language>English</language>
+            <proficiency>Native</proficiency>
+        </language>
+        <language>
+            <language>Spanish</language>
+            <proficiency>Intermediate</proficiency>
+        </language>
+    </languages>
+    
+    <interests>
+        <interest>Open Source Development</interest>
+        <interest>Machine Learning</interest>
+        <interest>Photography</interest>
+        <interest>Traveling</interest>
+        <interest>Reading Tech Blogs</interest>
+    </interests>
+    
+    <availability>
+        <status>Available for new opportunities</status>
+        <preferredRoles>
+            <role>Full Stack Developer</role>
+            <role>Frontend Developer</role>
+            <role>Software Engineer</role>
+        </preferredRoles>
+        <workType>
+            <type>Remote</type>
+            <type>Hybrid</type>
+            <type>On-site</type>
+        </workType>
+    </availability>
+    
+</personalInfo>

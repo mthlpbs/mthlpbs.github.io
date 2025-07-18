@@ -5,33 +5,45 @@
     
     <name>Mithila Prabashwara</name>
     <birth>2001-10-07</birth>
-    <email>mithila.prabashwara@example.com</email>
+    <email>asuramanna.mithilaprabashwara@gmail.com</email>
     
     <location>
         <city>Mirigama</city>
         <country>Sri Lanka</country>
     </location>
     
-    <title>Full Stack Developer</title>
+    <title>SE Undergraduate</title>
     
     <social>
         <linkedin>https://www.linkedin.com/in/mithilaprabashwara/</linkedin>
         <github>https://github.com/mthlpbs/</github>
-        <twitter>https://x.com/mithila_dev</twitter>
+        <github>https://github.com/asurpbs/</github>
         <portfolio>https://mthlpbs.github.io/</portfolio>
     </social>
     
     <skills>
-        <skill>JavaScript</skill>
-        <skill>Python</skill>
-        <skill>Java</skill>
-        <skill>HTML5</skill>
-        <skill>MongoDB</skill>
-        <skill>MySQL</skill>
-        <skill>Git</skill>
-        <skill>Docker</skill>
-        <skill>AWS</skill>
-        <skill>Azure</skill>
+        <programmingLanguages>
+            <skill>Python</skill>
+            <skill>Java</skill>
+            <skill>C</skill>
+        </programmingLanguages>
+        <webTechnologies>
+            <skill>HTML5</skill>
+            <skill>CSS3</skill>
+        </webTechnologies>
+        <databases>
+            <skill>MongoDB</skill>
+            <skill>MySQL</skill>
+        </databases>
+        <toolsPlatforms>
+            <skill>Git</skill>
+            <skill>Docker</skill>
+            <skill>AWS</skill>
+            <skill>Azure</skill>
+        </toolsPlatforms>
+        <other>
+            <skill>UI/UX Design</skill>
+        </other>
     </skills>
     
     <education>
@@ -39,43 +51,28 @@
             <institution>Saegis Campus Nugegoda</institution>
             <degree>Bachelor of Science in Software Engineering</degree>
             <graduation>2027</graduation>
-            <gpa>3.8/4.0</gpa>
+            <gpa>3.84/4.0 (Sophomore)</gpa>
         </education>
     </education>
     
     <projects>
         <project>
-            <name>E-commerce Platform</name>
-            <description>Full-stack e-commerce solution with payment integration</description>
+            <name>Library-Management-System</name>
+            <description>Library Management System with a user-friendly graphical interface, offering all the essential features of a traditional Lib. management solution for small scale library</description>
             <technologies>
-                <technology>React</technology>
-                <technology>Node.js</technology>
-                <technology>MongoDB</technology>
-                <technology>Stripe API</technology>
+                <technology>Java</technology>
             </technologies>
-            <github>https://github.com/mithilaprabashwara/ecommerce-platform</github>
-            <demo>https://ecommerce-demo.com</demo>
-        </project>
-        <project>
-            <name>Task Management App</name>
-            <description>Collaborative task management application with real-time updates</description>
-            <technologies>
-                <technology>Vue.js</technology>
-                <technology>Firebase</technology>
-                <technology>Socket.io</technology>
-            </technologies>
-            <github>https://github.com/mithilaprabashwara/task-manager</github>
-            <demo>https://task-manager-demo.com</demo>
+            <github>https://github.com/mthlpbs/Library-Management-System</github>
         </project>
     </projects>
     
     <languages>
         <language>
-            <language>English</language>
+            <language>Sinhala</language>
             <proficiency>Native</proficiency>
         </language>
         <language>
-            <language>Spanish</language>
+            <language>English</language>
             <proficiency>Intermediate</proficiency>
         </language>
     </languages>
@@ -83,16 +80,15 @@
     <interests>
         <interest>Open Source Development</interest>
         <interest>Machine Learning</interest>
-        <interest>Photography</interest>
-        <interest>Traveling</interest>
+        <interest>Artificial Intelligence</interest>
+        <interest>Software Developing</interest>
         <interest>Reading Tech Blogs</interest>
     </interests>
     
     <availability>
         <status>Available for new opportunities</status>
         <preferredRoles>
-            <role>Full Stack Developer</role>
-            <role>Frontend Developer</role>
+            <role>ML Engineer</role>
             <role>Software Engineer</role>
         </preferredRoles>
         <workType>

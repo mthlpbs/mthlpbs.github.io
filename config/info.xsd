@@ -37,15 +37,25 @@
     <!-- Social links type -->
     <xs:complexType name="SocialType">
         <xs:sequence>
-            <xs:element name="linkedin" type="xs:anyURI"/>
-            <xs:element name="github" type="xs:anyURI"/>
-            <xs:element name="twitter" type="xs:anyURI"/>
-            <xs:element name="portfolio" type="xs:anyURI"/>
+            <xs:element name="linkedin" type="xs:anyURI" maxOccurs="unbounded"/>
+            <xs:element name="github" type="xs:anyURI" maxOccurs="unbounded"/>
+            <xs:element name="twitter" type="xs:anyURI" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element name="portfolio" type="xs:anyURI" maxOccurs="unbounded"/>
         </xs:sequence>
     </xs:complexType>
 
     <!-- Skills type -->
     <xs:complexType name="SkillsType">
+        <xs:sequence>
+            <xs:element name="programmingLanguages" type="tns:SkillCategoryType"/>
+            <xs:element name="webTechnologies" type="tns:SkillCategoryType"/>
+            <xs:element name="databases" type="tns:SkillCategoryType"/>
+            <xs:element name="toolsPlatforms" type="tns:SkillCategoryType"/>
+            <xs:element name="other" type="tns:SkillCategoryType" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+    
+    <xs:complexType name="SkillCategoryType">
         <xs:sequence>
             <xs:element name="skill" type="xs:string" maxOccurs="unbounded"/>
         </xs:sequence>
@@ -96,7 +106,7 @@
             <xs:element name="description" type="xs:string"/>
             <xs:element name="technologies" type="tns:TechnologiesType"/>
             <xs:element name="github" type="xs:anyURI"/>
-            <xs:element name="demo" type="xs:anyURI"/>
+            <xs:element name="demo" type="xs:anyURI" minOccurs="0"/>
         </xs:sequence>
     </xs:complexType>
 

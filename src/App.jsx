@@ -17,7 +17,7 @@ function App() {
   useEffect(() => {
     const loadData = async () => {
       try {
-        const response = await fetch('/data/info.xml')
+        const response = await fetch('/info.xml')
         const xmlText = await response.text()
         const data = parseXMLData(xmlText)
         setPersonalData(data)

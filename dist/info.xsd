@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           targetNamespace="http://mthlpbs.github.io/config"
+           xmlns:tns="http://mthlpbs.github.io/config"
+           elementFormDefault="qualified">
+
+    <!-- Root element -->
+    <xs:element name="personalInfo" type="tns:PersonalInfoType"/>
+
+    <!-- Main personal info type -->
+    <xs:complexType name="PersonalInfoType">
+        <xs:sequence>
+            <xs:element name="name" type="xs:string"/>
+            <xs:element name="birth" type="xs:date"/>
+            <xs:element name="email" type="xs:string"/>
+            <xs:element name="location" type="tns:LocationType"/>
+            <xs:element name="title" type="xs:string"/>
+            <xs:element name="social" type="tns:SocialType"/>
+            <xs:element name="skills" type="tns:SkillsType"/>
+            <xs:element name="experience" type="tns:ExperienceListType" minOccurs="0"/>
+            <xs:element name="education" type="tns:EducationListType"/>
+            <xs:element name="projects" type="tns:ProjectListType"/>
+            <xs:element name="languages" type="tns:LanguageListType"/>
+            <xs:element name="interests" type="tns:InterestListType"/>
+            <xs:element name="availability" type="tns:AvailabilityType"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <!-- Location type -->
+    <xs:complexType name="LocationType">
+        <xs:sequence>
+            <xs:element name="city" type="xs:string"/>
+            <xs:element name="country" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <!-- Social links type -->
+    <xs:complexType name="SocialType">
+        <xs:sequence>
+            <xs:element name="linkedin" type="xs:anyURI" maxOccurs="unbounded"/>
+            <xs:element name="github" type="xs:anyURI" maxOccurs="unbounded"/>
+            <xs:element name="twitter" type="xs:anyURI" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element name="portfolio" type="xs:anyURI" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <!-- Skills type -->
+    <xs:complexType name="SkillsType">
+        <xs:sequence>
+            <xs:element name="programmingLanguages" type="tns:SkillCategoryType"/>
+            <xs:element name="webTechnologies" type="tns:SkillCategoryType"/>
+            <xs:element name="databases" type="tns:SkillCategoryType"/>
+            <xs:element name="toolsPlatforms" type="tns:SkillCategoryType"/>
+            <xs:element name="other" type="tns:SkillCategoryType" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+    
+    <xs:complexType name="SkillCategoryType">
+        <xs:sequence>
+            <xs:element name="skill" type="xs:string" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <!-- Experience types -->
+    <xs:complexType name="ExperienceListType">
+        <xs:sequence>
+            <xs:element name="experience" type="tns:ExperienceType" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="ExperienceType">
+        <xs:sequence>
+            <xs:element name="company" type="xs:string"/>
+            <xs:element name="position" type="xs:string"/>
+            <xs:element name="duration" type="xs:string"/>
+            <xs:element name="description" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <!-- Education types -->
+    <xs:complexType name="EducationListType">
+        <xs:sequence>
+            <xs:element name="education" type="tns:EducationType" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="EducationType">
+        <xs:sequence>
+            <xs:element name="institution" type="xs:string"/>
+            <xs:element name="degree" type="xs:string"/>
+            <xs:element name="graduation" type="xs:string"/>
+            <xs:element name="gpa" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <!-- Project types -->
+    <xs:complexType name="ProjectListType">
+        <xs:sequence>
+            <xs:element name="project" type="tns:ProjectType" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="ProjectType">
+        <xs:sequence>
+            <xs:element name="name" type="xs:string"/>
+            <xs:element name="description" type="xs:string"/>
+            <xs:element name="technologies" type="tns:TechnologiesType"/>
+            <xs:element name="github" type="xs:anyURI"/>
+            <xs:element name="demo" type="xs:anyURI" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="TechnologiesType">
+        <xs:sequence>
+            <xs:element name="technology" type="xs:string" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <!-- Language types -->
+    <xs:complexType name="LanguageListType">
+        <xs:sequence>
+            <xs:element name="language" type="tns:LanguageType" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="LanguageType">
+        <xs:sequence>
+            <xs:element name="language" type="xs:string"/>
+            <xs:element name="proficiency" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <!-- Interest types -->
+    <xs:complexType name="InterestListType">
+        <xs:sequence>
+            <xs:element name="interest" type="xs:string" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <!-- Availability types -->
+    <xs:complexType name="AvailabilityType">
+        <xs:sequence>
+            <xs:element name="status" type="xs:string"/>
+            <xs:element name="preferredRoles" type="tns:RoleListType"/>
+            <xs:element name="workType" type="tns:WorkTypeListType"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="RoleListType">
+        <xs:sequence>
+            <xs:element name="role" type="xs:string" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="WorkTypeListType">
+        <xs:sequence>
+            <xs:element name="type" type="xs:string" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+
+</xs:schema>

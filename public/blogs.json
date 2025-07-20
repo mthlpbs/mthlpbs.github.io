@@ -25,19 +25,6 @@
       "content": "building-library-management-system.md",
       "published": true,
       "featured": false
-    },
-    {
-      "id": "apple-style-portfolio-design",
-      "title": "Designing Modern Portfolio Interfaces Inspired by Apple",
-      "date": "2025-07-15",
-      "category": "Design",
-      "tags": ["UI/UX", "Design", "Apple", "Portfolio", "Glassmorphism"],
-      "readTime": "5 min read",
-      "thumbnail": "/images/blogs/apple-design-thumbnail.jpg",
-      "excerpt": "Explore the principles behind Apple's design philosophy and how to apply them to modern portfolio websites.",
-      "content": "apple-style-portfolio-design.md",
-      "published": true,
-      "featured": false
     }
   ]
 }

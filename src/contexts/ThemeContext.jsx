@@ -14,7 +14,6 @@ export const useTheme = () => {
 export const ThemeProvider = ({ children }) => {
   const [theme, setTheme] = useState('dark')
   const [config, setConfig] = useState(null)
-  const [isLoading, setIsLoading] = useState(true)
 
   // Load configuration from .config file
   useEffect(() => {
@@ -31,12 +30,10 @@ export const ThemeProvider = ({ children }) => {
         // Apply theme to document
         document.documentElement.setAttribute('data-theme', initialTheme)
         
-        setIsLoading(false)
       } catch (error) {
         console.error('Failed to load config:', error)
         setTheme('dark')
         document.documentElement.setAttribute('data-theme', 'dark')
-        setIsLoading(false)
       }
     }
 
@@ -73,7 +70,6 @@ export const ThemeProvider = ({ children }) => {
   const value = {
     theme,
     config,
-    isLoading,
     toggleTheme,
     isDark: theme === 'dark',
     isLight: theme === 'light'

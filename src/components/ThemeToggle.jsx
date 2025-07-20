@@ -4,10 +4,10 @@ import { Sun, Moon } from 'lucide-react'
 import { useTheme } from '../contexts/ThemeContext'
 
 export default function ThemeToggle() {
-  const { theme, toggleTheme, config, isLoading } = useTheme()
+  const { theme, toggleTheme, config } = useTheme()
 
   // Don't render if theme toggle is disabled in config
-  if (isLoading || !config?.siteSettings?.enableThemeToggle) {
+  if (!config?.siteSettings?.enableThemeToggle) {
     return null
   }
 

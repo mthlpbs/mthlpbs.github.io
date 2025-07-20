@@ -1,0 +1,337 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Dark theme (default) */
+    --bg-primary: 10, 10, 10;
+    --bg-secondary: 26, 26, 26;
+    --bg-tertiary: 15, 15, 15;
+    --text-primary: 255, 255, 255;
+    --text-secondary: 163, 163, 163;
+    --text-muted: 115, 115, 115;
+    --border-primary: 255, 255, 255, 0.2;
+    --border-secondary: 255, 255, 255, 0.1;
+    --glass-bg: 255, 255, 255, 0.1;
+    --glass-border: 255, 255, 255, 0.2;
+    --shadow-color: 0, 0, 0;
+  }
+
+  [data-theme="light"] {
+    /* Light theme */
+    --bg-primary: 248, 250, 252;
+    --bg-secondary: 241, 245, 249;
+    --bg-tertiary: 255, 255, 255;
+    --text-primary: 15, 23, 42;
+    --text-secondary: 71, 85, 105;
+    --text-muted: 148, 163, 184;
+    --border-primary: 0, 0, 0, 0.1;
+    --border-secondary: 0, 0, 0, 0.05;
+    --glass-bg: 255, 255, 255, 0.7;
+    --glass-border: 0, 0, 0, 0.1;
+    --shadow-color: 0, 0, 0;
+  }
+
+  * {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background: rgb(var(--bg-primary));
+    color: rgb(var(--text-primary));
+    min-height: 100vh;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+
+  .theme-transition {
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+  }
+  
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: rgba(var(--text-primary), 0.05);
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: rgba(var(--text-primary), 0.25);
+    border-radius: 4px;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgba(var(--text-primary), 0.4);
+  }
+}
+
+@layer components {
+  .glass-morphism {
+    background: rgba(var(--glass-bg));
+    backdrop-filter: blur(20px) saturate(180%);
+    border: 1px solid rgba(var(--glass-border));
+    box-shadow: 0 8px 32px rgba(var(--shadow-color), 0.3), inset 0 1px 0 rgba(var(--text-primary), 0.1);
+  }
+
+  [data-theme="light"] .glass-morphism {
+    background: rgba(var(--glass-bg));
+    backdrop-filter: blur(20px) saturate(180%);
+    border: 1px solid rgba(var(--glass-border));
+    box-shadow: 0 4px 20px rgba(var(--shadow-color), 0.08), 
+                0 1px 3px rgba(var(--shadow-color), 0.1), 
+                inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  }
+
+  /* Light mode text improvements */
+  [data-theme="light"] .text-gradient {
+    background: linear-gradient(135deg, #1e40af 0%, #7c3aed 50%, #db2777 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: brightness(0.9) saturate(1.2);
+  }
+
+  [data-theme="light"] .text-shadow,
+  [data-theme="light"] .text-shadow-sm {
+    text-shadow: none;
+  }
+
+  /* Light mode navigation */
+  [data-theme="light"] .text-gray-300 {
+    color: rgb(var(--text-secondary));
+  }
+
+  [data-theme="light"] .text-gray-400 {
+    color: rgb(var(--text-muted));
+  }
+
+  /* Light mode specific overrides */
+  [data-theme="light"] {
+    color-scheme: light;
+  }
+
+  [data-theme="light"] h1,
+  [data-theme="light"] h2,
+  [data-theme="light"] h3,
+  [data-theme="light"] h4,
+  [data-theme="light"] h5,
+  [data-theme="light"] h6 {
+    color: rgb(var(--text-primary));
+    text-shadow: none;
+  }
+
+  [data-theme="light"] p {
+    color: rgb(var(--text-secondary));
+  }
+  
+  .apple-button {
+    @apply px-6 py-3 rounded-full font-medium transition-all duration-300 ease-out;
+    @apply hover:scale-105 active:scale-95;
+    box-shadow: 0 4px 16px rgba(var(--shadow-color), 0.2);
+  }
+  
+  .apple-button-primary {
+    @apply apple-button bg-apple-blue-500 text-white;
+    @apply hover:bg-apple-blue-600 hover:shadow-lg hover:shadow-apple-blue-500/25;
+    box-shadow: 0 4px 20px rgba(0, 122, 255, 0.3);
+  }
+  
+  .apple-button-secondary {
+    @apply apple-button text-white;
+    background: rgba(var(--glass-bg));
+    border: 1px solid rgba(var(--glass-border));
+    @apply hover:shadow-lg;
+  }
+
+  [data-theme="light"] .apple-button-secondary {
+    @apply text-black;
+  }
+  
+  .section-padding {
+    @apply px-6 sm:px-8 lg:px-12;
+  }
+  
+  .container-custom {
+    @apply max-w-7xl mx-auto section-padding;
+  }
+  
+  .text-gradient {
+    @apply bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent;
+    filter: brightness(1.2);
+  }
+  
+  .card-hover {
+    @apply transition-all duration-300 ease-out;
+    @apply hover:scale-105 hover:shadow-2xl;
+    box-shadow: 0 4px 20px rgba(var(--shadow-color), 0.1);
+  }
+
+  .card-hover:hover {
+    box-shadow: 0 8px 40px rgba(var(--shadow-color), 0.2);
+  }
+}
+
+@layer utilities {
+  .text-shadow {
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5), 0 1px 4px rgba(0, 0, 0, 0.3);
+  }
+  
+  .text-shadow-sm {
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
+  }
+  
+  .backdrop-blur-apple {
+    backdrop-filter: blur(20px) saturate(180%);
+  }
+
+  /* GitHub-style code highlighting */
+  .github-code-light {
+    background-color: #f6f8fa;
+    color: #24292f;
+    border: 1px solid #d0d7de;
+  }
+
+  .github-code-dark {
+    background-color: #0d1117;
+    color: #e6edf3;
+    border: 1px solid #30363d;
+  }
+
+  /* GitHub syntax highlighting colors */
+  .github-code-light .token.comment,
+  .github-code-light .token.prolog,
+  .github-code-light .token.doctype,
+  .github-code-light .token.cdata {
+    color: #6e7781;
+    font-style: italic;
+  }
+
+  .github-code-light .token.namespace {
+    opacity: 0.7;
+  }
+
+  .github-code-light .token.string,
+  .github-code-light .token.attr-value {
+    color: #032f62;
+  }
+
+  .github-code-light .token.punctuation,
+  .github-code-light .token.operator {
+    color: #24292f;
+  }
+
+  .github-code-light .token.entity,
+  .github-code-light .token.url,
+  .github-code-light .token.symbol,
+  .github-code-light .token.number,
+  .github-code-light .token.boolean,
+  .github-code-light .token.variable,
+  .github-code-light .token.constant,
+  .github-code-light .token.property,
+  .github-code-light .token.regex,
+  .github-code-light .token.inserted {
+    color: #005cc5;
+  }
+
+  .github-code-light .token.atrule,
+  .github-code-light .token.keyword,
+  .github-code-light .token.attr-name,
+  .github-code-light .token.selector {
+    color: #d73a49;
+  }
+
+  .github-code-light .token.function,
+  .github-code-light .token.deleted,
+  .github-code-light .token.tag {
+    color: #6f42c1;
+  }
+
+  .github-code-light .token.function-name {
+    color: #005cc5;
+  }
+
+  .github-code-light .token.tag .token.punctuation {
+    color: #22863a;
+  }
+
+  /* Dark theme colors */
+  .github-code-dark .token.comment,
+  .github-code-dark .token.prolog,
+  .github-code-dark .token.doctype,
+  .github-code-dark .token.cdata {
+    color: #8b949e;
+    font-style: italic;
+  }
+
+  .github-code-dark .token.namespace {
+    opacity: 0.7;
+  }
+
+  .github-code-dark .token.string,
+  .github-code-dark .token.attr-value {
+    color: #a5d6ff;
+  }
+
+  .github-code-dark .token.punctuation,
+  .github-code-dark .token.operator {
+    color: #e6edf3;
+  }
+
+  .github-code-dark .token.entity,
+  .github-code-dark .token.url,
+  .github-code-dark .token.symbol,
+  .github-code-dark .token.number,
+  .github-code-dark .token.boolean,
+  .github-code-dark .token.variable,
+  .github-code-dark .token.constant,
+  .github-code-dark .token.property,
+  .github-code-dark .token.regex,
+  .github-code-dark .token.inserted {
+    color: #79c0ff;
+  }
+
+  .github-code-dark .token.atrule,
+  .github-code-dark .token.keyword,
+  .github-code-dark .token.attr-name,
+  .github-code-dark .token.selector {
+    color: #ff7b72;
+  }
+
+  .github-code-dark .token.function,
+  .github-code-dark .token.deleted,
+  .github-code-dark .token.tag {
+    color: #d2a8ff;
+  }
+
+  .github-code-dark .token.function-name {
+    color: #79c0ff;
+  }
+
+  .github-code-dark .token.tag .token.punctuation {
+    color: #7ee787;
+  }
+
+  /* Inline code styles */
+  .github-inline-code-light {
+    background-color: rgba(175, 184, 193, 0.2);
+    color: #0969da;
+    padding: 0.2em 0.4em;
+    border-radius: 6px;
+    font-size: 85%;
+    font-family: ui-monospace, SFMono-Regular, "SF Mono", Consolas, "Liberation Mono", Menlo, monospace;
+  }
+
+  .github-inline-code-dark {
+    background-color: rgba(110, 118, 129, 0.4);
+    color: #79c0ff;
+    padding: 0.2em 0.4em;
+    border-radius: 6px;
+    font-size: 85%;
+    font-family: ui-monospace, SFMono-Regular, "SF Mono", Consolas, "Liberation Mono", Menlo, monospace;
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "blogs": [
+    {
+      "id": "react-portfolio-xml-parsing",
+      "title": "Creating a Dynamic Portfolio with React and XML Data Parsing",
+      "date": "2025-01-10",
+      "category": "Web Development",
+      "tags": ["React", "JavaScript", "XML", "Portfolio", "Vite"],
+      "readTime": "8 min read",
+      "thumbnail": "/images/blogs/react-portfolio-thumbnail.jpg",
+      "excerpt": "Discover how to build a modern portfolio website that dynamically loads data from XML files using React and modern tooling.",
+      "content": "react-portfolio-xml-parsing.md",
+      "published": true,
+      "featured": true
+    },
+    {
+      "id": "building-library-management-system",
+      "title": "Building a Library Management System with Java and JavaFX",
+      "date": "2024-12-15",
+      "category": "Software Development",
+      "tags": ["Java", "JavaFX", "SQLite", "Desktop App"],
+      "readTime": "6 min read",
+      "thumbnail": "/images/blogs/library-system-thumbnail.jpg",
+      "excerpt": "Learn how I built a comprehensive library management system with modern JavaFX interface and SQLite database integration.",
+      "content": "building-library-management-system.md",
+      "published": true,
+      "featured": false
+    },
+    {
+      "id": "apple-style-portfolio-design",
+      "title": "Designing Modern Portfolio Interfaces Inspired by Apple",
+      "date": "2025-07-15",
+      "category": "Design",
+      "tags": ["UI/UX", "Design", "Apple", "Portfolio", "Glassmorphism"],
+      "readTime": "5 min read",
+      "thumbnail": "/images/blogs/apple-design-thumbnail.jpg",
+      "excerpt": "Explore the principles behind Apple's design philosophy and how to apply them to modern portfolio websites.",
+      "content": "apple-style-portfolio-design.md",
+      "published": true,
+      "featured": false
+    }
+  ]
+}

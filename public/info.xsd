@@ -15,10 +15,12 @@
             <xs:element name="email" type="xs:string"/>
             <xs:element name="location" type="tns:LocationType"/>
             <xs:element name="title" type="xs:string"/>
+            <xs:element name="cv" type="xs:anyURI" minOccurs="0"/>
             <xs:element name="social" type="tns:SocialType"/>
             <xs:element name="skills" type="tns:SkillsType"/>
             <xs:element name="experience" type="tns:ExperienceListType" minOccurs="0"/>
             <xs:element name="education" type="tns:EducationListType"/>
+            <xs:element name="certifications" type="xs:anyURI" minOccurs="0"/>
             <xs:element name="projects" type="tns:ProjectListType"/>
             <xs:element name="languages" type="tns:LanguageListType"/>
             <xs:element name="interests" type="tns:InterestListType"/>
@@ -87,9 +89,11 @@
     <xs:complexType name="EducationType">
         <xs:sequence>
             <xs:element name="institution" type="xs:string"/>
-            <xs:element name="degree" type="xs:string"/>
+            <xs:element name="degree" type="xs:string" minOccurs="0"/>
+            <xs:element name="gradeRange" type="xs:string" minOccurs="0"/>
+            <xs:element name="stream" type="xs:string" minOccurs="0"/>
             <xs:element name="graduation" type="xs:string"/>
-            <xs:element name="gpa" type="xs:string"/>
+            <xs:element name="gpa" type="xs:string" minOccurs="0"/>
         </xs:sequence>
     </xs:complexType>
 

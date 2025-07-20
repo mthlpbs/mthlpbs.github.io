@@ -14,6 +14,8 @@
     
     <title>SE Undergraduate</title>
     
+    <cv>https://mthlpbs.github.io/assets/cv/Mithila_Prabashwara_CV.pdf</cv>
+    
     <social>
         <linkedin>https://www.linkedin.com/in/mithilaprabashwara/</linkedin>
         <github>https://github.com/mthlpbs/</github>
@@ -56,12 +58,25 @@
     
     <education>
         <education>
+            <institution>Sujatha Vidyalaya Nugegoda</institution>
+            <gradeRange>5 - 11</gradeRange>
+            <graduation>2019</graduation>
+        </education>
+        <education>
+            <institution>Sujatha Vidyalaya Nugegoda</institution>
+            <gradeRange>12 - 13</gradeRange>
+            <stream>Mathematics</stream>
+            <graduation>2021</graduation>
+        </education>
+        <education>
             <institution>Saegis Campus Nugegoda</institution>
             <degree>Bachelor of Science in Software Engineering</degree>
             <graduation>2027</graduation>
             <gpa>3.84/4.0 (Sophomore)</gpa>
         </education>
     </education>
+    
+    <certifications>https://www.linkedin.com/in/mithilaprabashwara/details/certifications/</certifications>
     
     <projects>
         <project>

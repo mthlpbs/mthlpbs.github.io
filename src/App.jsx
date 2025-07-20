@@ -10,6 +10,7 @@ import Header from './components/Header'
 import LoadingScreen from './components/LoadingScreen'
 import ErrorBoundary from './components/ErrorBoundary'
 import ScrollToTop from './components/ScrollToTop'
+import MaintenancePage from './components/MaintenancePage'
 
 // Pages
 import Home from './pages/Home'
@@ -20,10 +21,12 @@ import BlogPost from './pages/BlogPost'
 // Utils
 import { XMLParser } from './utils/xmlParser'
 import { fetchBlogs } from './utils/blogParser'
+import { ConfigParser } from './utils/configParser'
 
 function App() {
   const [portfolioData, setPortfolioData] = useState(null)
   const [blogsData, setBlogsData] = useState(null)
+  const [config, setConfig] = useState(null)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(null)
 
@@ -31,6 +34,16 @@ function App() {
     const loadData = async () => {
       try {
         setLoading(true)
+        
+        // Load config first to check maintenance mode
+        const configData = await ConfigParser.loadConfig()
+        setConfig(configData)
+        
+        // If maintenance mode is enabled, only load config and stop here
+        if (configData?.siteSettings?.maintenanceMode?.enabled) {
+          setLoading(false)
+          return
+        }
         
         // Load XML data
         const parser = new XMLParser()
@@ -54,6 +67,15 @@ function App() {
 
   if (loading) {
     return <LoadingScreen />
+  }
+
+  // Check for maintenance mode
+  if (config?.siteSettings?.maintenanceMode?.enabled) {
+    return (
+      <ThemeProvider>
+        <MaintenancePage config={config} />
+      </ThemeProvider>
+    )
   }
 
   if (error) {

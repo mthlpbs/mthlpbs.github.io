@@ -1,6 +1,6 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
-import { copyFileSync, existsSync } from 'fs'
+import { copyFileSync, existsSync, readFileSync } from 'fs'
 import { resolve } from 'path'
 
 // Custom plugin to ensure .config file is copied
@@ -8,12 +8,26 @@ const copyConfigPlugin = () => {
   return {
     name: 'copy-config',
     writeBundle() {
-      const configSrc = resolve('public/.config')
+      const configSrc = resolve('.config')
       const configDest = resolve('dist/.config')
       if (existsSync(configSrc)) {
         copyFileSync(configSrc, configDest)
         console.log('✅ Copied .config file to dist/')
       }
+    },
+    configureServer(server) {
+      // Serve .config file during development
+      server.middlewares.use('/.config', (req, res, next) => {
+        const configPath = resolve('.config')
+        if (existsSync(configPath)) {
+          res.setHeader('Content-Type', 'text/plain')
+          const content = readFileSync(configPath, 'utf8')
+          res.end(content)
+        } else {
+          res.statusCode = 404
+          res.end('Config file not found')
+        }
+      })
     }
   }
 }

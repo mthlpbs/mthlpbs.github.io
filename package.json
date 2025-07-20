@@ -7,7 +7,10 @@
     "build": "vite build",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
-    "deploy": "npm run build && gh-pages -d dist"
+    "deploy": "npm run build && gh-pages -d dist",
+    "maintenance:on": "node scripts/maintenance.cjs on",
+    "maintenance:off": "node scripts/maintenance.cjs off",
+    "maintenance:status": "node scripts/maintenance.cjs status"
   },
   "dependencies": {
     "framer-motion": "^10.16.16",
@@ -18,7 +21,8 @@
     "react-markdown": "^9.0.1",
     "react-router-dom": "^6.20.1",
     "remark-gfm": "^4.0.0",
-    "simple-icons": "^15.7.0"
+    "simple-icons": "^15.7.0",
+    "three": "^0.178.0"
   },
   "devDependencies": {
     "@types/react": "^18.2.43",

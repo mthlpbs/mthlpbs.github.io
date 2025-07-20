@@ -1,4 +1,5 @@
 import React, { createContext, useContext, useState, useEffect } from 'react'
+import { ConfigParser } from '../utils/configParser'
 
 const ThemeContext = createContext()
 
@@ -19,36 +20,12 @@ export const ThemeProvider = ({ children }) => {
   useEffect(() => {
     const loadConfig = async () => {
       try {
-        // Try to load from .config file first
-        let defaultTheme = 'dark'
-        
-        try {
-          const configResponse = await fetch('/.config')
-          const configText = await configResponse.text()
-          
-          // Parse simple key=value format
-          const lines = configText.split('\n')
-          for (const line of lines) {
-            const trimmedLine = line.trim()
-            if (trimmedLine && !trimmedLine.startsWith('#')) {
-              const [key, value] = trimmedLine.split('=')
-              if (key === 'DEFAULT_THEME' && value) {
-                defaultTheme = value.toLowerCase()
-                break
-              }
-            }
-          }
-        } catch (configError) {
-          console.warn('Could not load .config file, using fallback')
-        }
-
-        // Load the main config.json for other settings
-        const response = await fetch('/config.json')
-        const configData = await response.json()
+        // Load config using the ConfigParser
+        const configData = await ConfigParser.loadConfig()
         setConfig(configData)
         
-        // Set initial theme from .config file, fallback to config.json, then default
-        const initialTheme = defaultTheme || configData.siteSettings?.theme || 'dark'
+        // Set initial theme from config
+        const initialTheme = configData.siteSettings?.theme || 'dark'
         setTheme(initialTheme)
         
         // Apply theme to document

@@ -31,7 +31,232 @@ jobs:
     - name: Install dependencies
       run: npm install
 
-    - name: Build
+    - name: Check maintenance mode
+      id: maintenance
+      run: |
+        MAINTENANCE=$(grep "^MAINTENANCE_MODE_ENABLED=" .config | cut -d'=' -f2 || echo "false")
+        echo "enabled=$MAINTENANCE" >> $GITHUB_OUTPUT
+        echo "Maintenance mode: $MAINTENANCE"
+
+    - name: Build maintenance page
+      if: steps.maintenance.outputs.enabled == 'true'
+      run: |
+        mkdir -p dist
+        node -e "
+        const fs = require('fs');
+        
+        // Parse .config file
+        const configContent = fs.readFileSync('./.config', 'utf8');
+        const configLines = configContent.split('\\n');
+        const config = {};
+        
+        configLines.forEach(line => {
+          const trimmedLine = line.trim();
+          if (trimmedLine.startsWith('#') || !trimmedLine) return;
+          
+          const [key, ...valueParts] = trimmedLine.split('=');
+          const value = valueParts.join('=').trim();
+          
+          if (key && value !== undefined) {
+            config[key.trim()] = value;
+          }
+        });
+        
+        const message = config['MAINTENANCE_MODE_MESSAGE'] || 'We are currently performing maintenance. Please check back soon!';
+        const estimatedTime = config['MAINTENANCE_MODE_ESTIMATED_TIME'] || '';
+        const primaryColor = config['DARK_THEME_PRIMARY'] || '#000000';
+        const secondaryColor = config['DARK_THEME_SECONDARY'] || '#1a1a1a';
+        const accentColor = config['DARK_THEME_ACCENT'] || '#007aff';
+        const textColor = config['DARK_THEME_TEXT'] || '#ffffff';
+        const textSecondaryColor = config['DARK_THEME_TEXT_SECONDARY'] || '#a3a3a3';
+        
+        const html = \`<!DOCTYPE html>
+        <html lang=\"en\">
+        <head>
+          <meta charset=\"UTF-8\">
+          <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">
+          <title>Under Maintenance</title>
+          <style>
+            * { margin: 0; padding: 0; box-sizing: border-box; }
+            body {
+              font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+              background: linear-gradient(45deg, \${primaryColor}, \${secondaryColor});
+              color: \${textColor};
+              min-height: 100vh;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              padding: 1rem;
+              overflow: hidden;
+              position: relative;
+            }
+            
+            .particles {
+              position: absolute;
+              top: 0;
+              left: 0;
+              width: 100%;
+              height: 100%;
+              overflow: hidden;
+              z-index: 1;
+            }
+            
+            .particle {
+              position: absolute;
+              background: \${accentColor};
+              border-radius: 50%;
+              opacity: 0.6;
+              animation: float 6s ease-in-out infinite;
+            }
+            
+            .particle:nth-child(1) { width: 4px; height: 4px; left: 10%; animation-delay: 0s; animation-duration: 6s; }
+            .particle:nth-child(2) { width: 6px; height: 6px; left: 20%; animation-delay: 1s; animation-duration: 8s; }
+            .particle:nth-child(3) { width: 3px; height: 3px; left: 30%; animation-delay: 2s; animation-duration: 7s; }
+            .particle:nth-child(4) { width: 5px; height: 5px; left: 40%; animation-delay: 3s; animation-duration: 9s; }
+            .particle:nth-child(5) { width: 4px; height: 4px; left: 50%; animation-delay: 4s; animation-duration: 6s; }
+            .particle:nth-child(6) { width: 6px; height: 6px; left: 60%; animation-delay: 5s; animation-duration: 8s; }
+            .particle:nth-child(7) { width: 3px; height: 3px; left: 70%; animation-delay: 1.5s; animation-duration: 7s; }
+            .particle:nth-child(8) { width: 5px; height: 5px; left: 80%; animation-delay: 2.5s; animation-duration: 9s; }
+            .particle:nth-child(9) { width: 4px; height: 4px; left: 90%; animation-delay: 3.5s; animation-duration: 6s; }
+            .particle:nth-child(10) { width: 6px; height: 6px; left: 15%; animation-delay: 0.5s; animation-duration: 8s; }
+            
+            @keyframes float {
+              0%, 100% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+              10% { opacity: 0.6; }
+              90% { opacity: 0.6; }
+              100% { transform: translateY(-100px) rotate(360deg); opacity: 0; }
+            }
+            
+            .shapes {
+              position: absolute;
+              top: 0;
+              left: 0;
+              width: 100%;
+              height: 100%;
+              z-index: 1;
+            }
+            
+            .shape {
+              position: absolute;
+              border: 2px solid \${accentColor};
+              opacity: 0.3;
+              animation: rotate 10s linear infinite;
+            }
+            
+            .shape.circle { border-radius: 50%; width: 60px; height: 60px; top: 20%; left: 10%; }
+            .shape.square { width: 40px; height: 40px; top: 60%; right: 20%; animation-direction: reverse; }
+            .shape.triangle { 
+              width: 0; height: 0; border: none;
+              border-left: 20px solid transparent;
+              border-right: 20px solid transparent;
+              border-bottom: 35px solid \${accentColor};
+              top: 30%; right: 10%;
+              animation-duration: 15s;
+            }
+            
+            @keyframes rotate {
+              from { transform: rotate(0deg) scale(1); }
+              50% { transform: rotate(180deg) scale(1.2); }
+              to { transform: rotate(360deg) scale(1); }
+            }
+            
+            .container {
+              text-align: center;
+              max-width: 28rem;
+              margin: 0 auto;
+              position: relative;
+              z-index: 10;
+              background: rgba(\${secondaryColor.replace('#', '')}, 0.8);
+              backdrop-filter: blur(10px);
+              padding: 3rem 2rem;
+              border-radius: 1rem;
+              border: 1px solid rgba(\${accentColor.replace('#', '')}, 0.3);
+            }
+            
+            .icon {
+              font-size: 5rem;
+              color: \${accentColor};
+              margin-bottom: 1rem;
+              animation: pulse 2s infinite;
+            }
+            
+            @keyframes pulse {
+              0%, 100% { opacity: 1; transform: scale(1); }
+              50% { opacity: 0.7; transform: scale(1.1); }
+            }
+            
+            h1 {
+              font-size: 2.5rem;
+              font-weight: bold;
+              margin-bottom: 1rem;
+            }
+            
+            .message {
+              font-size: 1.125rem;
+              color: \${textSecondaryColor};
+              margin-bottom: 1.5rem;
+              line-height: 1.6;
+            }
+            
+            .time-estimate {
+              background: rgba(\${accentColor.replace('#', '')}, 0.1);
+              border: 1px solid rgba(\${accentColor.replace('#', '')}, 0.3);
+              padding: 0.75rem;
+              border-radius: 0.5rem;
+              margin-bottom: 1.5rem;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              gap: 0.5rem;
+            }
+            
+            .footer {
+              margin-top: 2rem;
+              font-size: 0.875rem;
+              color: \${textSecondaryColor};
+            }
+          </style>
+        </head>
+        <body>
+          <div class=\"particles\">
+            <div class=\"particle\"></div>
+            <div class=\"particle\"></div>
+            <div class=\"particle\"></div>
+            <div class=\"particle\"></div>
+            <div class=\"particle\"></div>
+            <div class=\"particle\"></div>
+            <div class=\"particle\"></div>
+            <div class=\"particle\"></div>
+            <div class=\"particle\"></div>
+            <div class=\"particle\"></div>
+          </div>
+          
+          <div class=\"shapes\">
+            <div class=\"shape circle\"></div>
+            <div class=\"shape square\"></div>
+            <div class=\"shape triangle\"></div>
+          </div>
+          
+          <div class=\"container\">
+            <div class=\"icon\">🔧</div>
+            <h1>Under Maintenance</h1>
+            <p class=\"message\">\${message}</p>
+            \${estimatedTime ? \`
+            <div class=\"time-estimate\">
+              🕒 Estimated time: \${estimatedTime}
+            </div>
+            \` : ''}
+            <div class=\"footer\">Thank you for your patience!</div>
+          </div>
+        </body>
+        </html>\`;
+        
+        fs.writeFileSync('./dist/index.html', html);
+        console.log('Enhanced maintenance page created');
+        "
+
+    - name: Build application
+      if: steps.maintenance.outputs.enabled != 'true'
       run: npm run build
 
     - name: Setup Pages

@@ -72,7 +72,9 @@
                 <technology>JavaFX</technology>
                 <technology>SQLite</technology>
             </technologies>
-            <github>https://github.com/mthlpbs/Library-Management-System</github>
+            <image></image>
+            <preview></preview>
+            <link>https://github.com/mthlpbs/Library-Management-System</link>
         </project>
         <project>
             <name>Portfolio Website</name>
@@ -84,7 +86,9 @@
                 <technology>Vite</technology>
                 <technology>Framer Motion</technology>
             </technologies>
-            <github>https://github.com/mthlpbs/mthlpbs.github.io</github>
+            <image></image>
+            <preview></preview>
+            <link>https://github.com/mthlpbs/mthlpbs.github.io</link>
             <demo>https://mthlpbs.github.io</demo>
         </project>
     </projects>

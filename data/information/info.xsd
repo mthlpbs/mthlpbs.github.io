@@ -105,7 +105,9 @@
             <xs:element name="name" type="xs:string"/>
             <xs:element name="description" type="xs:string"/>
             <xs:element name="technologies" type="tns:TechnologiesType"/>
-            <xs:element name="github" type="xs:anyURI"/>
+            <xs:element name="image" type="xs:anyURI" minOccurs="0"/>
+            <xs:element name="preview" type="xs:anyURI" minOccurs="0"/>
+            <xs:element name="link" type="xs:anyURI"/>
             <xs:element name="demo" type="xs:anyURI" minOccurs="0"/>
         </xs:sequence>
     </xs:complexType>

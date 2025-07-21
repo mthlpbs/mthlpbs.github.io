@@ -164,63 +164,39 @@ function RobotHead() {
 
 // Hamburger Menu Icon Component
 function HamburgerIcon({ isOpen, onClick }) {
-  const { isLight } = useTheme()
-  
   return (
     <motion.button
-      className="relative w-10 h-10 flex flex-col justify-center items-center p-2 rounded-lg transition-all duration-200 border"
-      style={{
-        backgroundColor: 'rgba(var(--glass-bg), 0.1)',
-        borderColor: 'rgba(var(--border-primary))'
-      }}
+      className="relative w-6 h-6 flex flex-col justify-center items-center space-y-1 p-2"
       onClick={onClick}
       whileTap={{ scale: 0.95 }}
-      whileHover={{ 
-        scale: 1.05,
-        backgroundColor: 'rgba(var(--glass-bg), 0.2)'
-      }}
       aria-label="Toggle menu"
     >
-      <div className="relative w-5 h-4 flex flex-col justify-between">
-        <motion.span
-          className="w-5 h-0.5 rounded-full"
-          style={{ 
-            backgroundColor: isLight ? '#1f2937' : '#ffffff',
-            boxShadow: isLight ? 'none' : '0 0 0 1px rgba(255,255,255,0.1)'
-          }}
-          animate={{
-            rotate: isOpen ? 45 : 0,
-            y: isOpen ? 8 : 0,
-            transformOrigin: 'center'
-          }}
-          transition={{ duration: 0.3, ease: "easeInOut" }}
-        />
-        <motion.span
-          className="w-5 h-0.5 rounded-full"
-          style={{ 
-            backgroundColor: isLight ? '#1f2937' : '#ffffff',
-            boxShadow: isLight ? 'none' : '0 0 0 1px rgba(255,255,255,0.1)'
-          }}
-          animate={{
-            opacity: isOpen ? 0 : 1,
-            scaleX: isOpen ? 0 : 1
-          }}
-          transition={{ duration: 0.3, ease: "easeInOut" }}
-        />
-        <motion.span
-          className="w-5 h-0.5 rounded-full"
-          style={{ 
-            backgroundColor: isLight ? '#1f2937' : '#ffffff',
-            boxShadow: isLight ? 'none' : '0 0 0 1px rgba(255,255,255,0.1)'
-          }}
-          animate={{
-            rotate: isOpen ? -45 : 0,
-            y: isOpen ? -8 : 0,
-            transformOrigin: 'center'
-          }}
-          transition={{ duration: 0.3, ease: "easeInOut" }}
-        />
-      </div>
+      <motion.span
+        className="w-6 h-0.5 rounded-full"
+        style={{ backgroundColor: 'rgb(var(--text-primary))' }}
+        animate={{
+          rotate: isOpen ? 45 : 0,
+          y: isOpen ? 2 : 0,
+        }}
+        transition={{ duration: 0.3 }}
+      />
+      <motion.span
+        className="w-6 h-0.5 rounded-full"
+        style={{ backgroundColor: 'rgb(var(--text-primary))' }}
+        animate={{
+          opacity: isOpen ? 0 : 1,
+        }}
+        transition={{ duration: 0.3 }}
+      />
+      <motion.span
+        className="w-6 h-0.5 rounded-full"
+        style={{ backgroundColor: 'rgb(var(--text-primary))' }}
+        animate={{
+          rotate: isOpen ? -45 : 0,
+          y: isOpen ? -2 : 0,
+        }}
+        transition={{ duration: 0.3 }}
+      />
     </motion.button>
   )
 }

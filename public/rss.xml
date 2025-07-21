@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title><![CDATA[Mithila Prabashwara's Blog]]></title>
+    <description><![CDATA[Thoughts, experiences, and insights from my journey in technology and software development]]></description>
+    <link>https://mthlpbs.github.io</link>
+    <atom:link href="https://mthlpbs.github.io/rss.xml" rel="self" type="application/rss+xml" />
+    <language>en-us</language>
+    <lastBuildDate>Mon, 21 Jul 2025 14:07:36 GMT</lastBuildDate>
+    <pubDate>Fri, 10 Jan 2025 00:00:00 GMT</pubDate>
+    <ttl>60</ttl>
+    <managingEditor><![CDATA[mithilaprabashwara@example.com]]></managingEditor>
+    <webMaster><![CDATA[mithilaprabashwara@example.com]]></webMaster>
+    <category><![CDATA[Technology, Software Development, Web Development]]></category>
+    <generator>Custom RSS Generator v1.0</generator>
+    <item>
+      <title><![CDATA[Creating a Dynamic Portfolio with React and XML Data Parsing]]></title>
+      <description><![CDATA[Discover how to build a modern portfolio website that dynamically loads data from XML files using React and modern tooling.]]></description>
+      <link>https://mthlpbs.github.io/blog/react-portfolio-xml-parsing</link>
+      <guid isPermaLink="true">https://mthlpbs.github.io/blog/react-portfolio-xml-parsing</guid>
+      <pubDate>Fri, 10 Jan 2025 00:00:00 GMT</pubDate>
+      <category><![CDATA[Web Development]]></category>
+      <category><![CDATA[React]]></category>
+      <category><![CDATA[JavaScript]]></category>
+      <category><![CDATA[XML]]></category>
+      <category><![CDATA[Portfolio]]></category>
+      <category><![CDATA[Vite]]></category>
+      <author><![CDATA[mithilaprabashwara@example.com]]></author>
+    </item>
+
+    <item>
+      <title><![CDATA[Building a Library Management System with Java and JavaFX]]></title>
+      <description><![CDATA[Learn how I built a comprehensive library management system with modern JavaFX interface and SQLite database integration.]]></description>
+      <link>https://mthlpbs.github.io/blog/building-library-management-system</link>
+      <guid isPermaLink="true">https://mthlpbs.github.io/blog/building-library-management-system</guid>
+      <pubDate>Sun, 15 Dec 2024 00:00:00 GMT</pubDate>
+      <category><![CDATA[Software Development]]></category>
+      <category><![CDATA[Java]]></category>
+      <category><![CDATA[JavaFX]]></category>
+      <category><![CDATA[SQLite]]></category>
+      <category><![CDATA[Desktop App]]></category>
+      <author><![CDATA[mithilaprabashwara@example.com]]></author>
+    </item>
+  </channel>
+</rss>

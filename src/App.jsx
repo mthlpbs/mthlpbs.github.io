@@ -82,7 +82,7 @@ function App() {
     <ThemeProvider>
       <ErrorBoundary>
         <ScrollToTop />
-        <div className="min-h-screen theme-transition relative overflow-hidden" style={{
+        <div className="min-h-screen theme-transition relative overflow-hidden pt-20" style={{
           background: 'rgb(var(--bg-primary))',
           color: 'rgb(var(--text-primary))'
         }}>

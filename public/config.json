@@ -4,7 +4,7 @@
     "enableThemeToggle": true,
     "defaultTheme": "dark",
     "maintenanceMode": {
-      "enabled": true,
+      "enabled": false,
       "message": "We're currently performing maintenance. Please check back soon!",
       "estimatedTime": ""
     },

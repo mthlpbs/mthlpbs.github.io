@@ -177,7 +177,10 @@ function BlogFilters({ blogs, searchTerm, onSearchChange, selectedCategory, onCa
           type="text"
           placeholder="Search articles..."
           value={searchTerm}
-          onChange={(e) => onSearchChange(e.target.value)}
+          onChange={(e) => {
+            const value = e.target.value
+            onSearchChange(value)
+          }}
           className={`w-full pl-12 pr-4 py-3 rounded-2xl transition-all focus:outline-none focus:ring-2 focus:ring-blue-500/20 ${
             isLight 
               ? 'glass-light border border-gray-200 focus:border-blue-500/50' 
@@ -193,7 +196,9 @@ function BlogFilters({ blogs, searchTerm, onSearchChange, selectedCategory, onCa
       {/* Category Filter */}
       <div className="flex flex-wrap justify-center gap-3">
         <button
-          onClick={() => onCategoryChange('all')}
+          onClick={() => {
+            onCategoryChange('all')
+          }}
           className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${
             selectedCategory === 'all'
               ? 'bg-blue-500 text-white'
@@ -208,7 +213,9 @@ function BlogFilters({ blogs, searchTerm, onSearchChange, selectedCategory, onCa
         {allCategories.map((category) => (
           <button
             key={category}
-            onClick={() => onCategoryChange(category)}
+            onClick={() => {
+              onCategoryChange(category)
+            }}
             className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${
               selectedCategory === category
                 ? 'bg-blue-500 text-white'
@@ -230,7 +237,6 @@ export default function Blogs({ blogs = [] }) {
   const [searchTerm, setSearchTerm] = useState('')
   const [selectedCategory, setSelectedCategory] = useState('all')
   const { isLight } = useTheme()
-  
   // Filter blogs based on search and category
   const filteredBlogs = blogs.filter(blog => {
     const matchesSearch = !searchTerm || 
@@ -313,7 +319,9 @@ export default function Blogs({ blogs = [] }) {
             <div className="flex flex-wrap justify-center gap-4">
               {searchTerm && (
                 <button
-                  onClick={() => setSearchTerm('')}
+                  onClick={() => {
+                  setSearchTerm('')
+                }}
                   className="apple-button-primary"
                 >
                   Clear Search

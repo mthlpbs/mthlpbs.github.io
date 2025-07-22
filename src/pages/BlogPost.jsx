@@ -717,7 +717,6 @@ export default function BlogPost({ blogs = [] }) {
   
   useEffect(() => {
     if (!blog) return
-    
     const loadContent = async () => {
       try {
         setLoading(true)

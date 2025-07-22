@@ -11,7 +11,10 @@ function ProjectCard({ project, index }) {
   return (
     <motion.div
       initial={{ opacity: 0, y: 50 }}
-      whileInView={{ opacity: 1, y: 0 }}
+      whileInView={{ 
+        opacity: 1, 
+        y: 0
+      }}
       transition={{ duration: 0.6, delay: index * 0.2 }}
       viewport={{ once: true }}
       className="glass-morphism rounded-3xl overflow-hidden card-hover group relative"

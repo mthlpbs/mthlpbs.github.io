@@ -85,6 +85,7 @@ function RobotHead() {
   
   const handleClick = (e) => {
     e.preventDefault()
+    const newTheme = isLight ? 'dark' : 'light'
     toggleTheme()
   }
   
@@ -307,7 +308,9 @@ function MobileMenu({ isOpen, onClose, navigationItems, currentPath }) {
                 >
                   <Link
                     to={item.path}
-                    onClick={onClose}
+                    onClick={() => {
+                      onClose();
+                    }}
                     className="block px-6 py-4 text-lg font-medium transition-all duration-200 relative"
                     style={{
                       color: currentPath === item.path 
@@ -339,7 +342,10 @@ function MobileMenu({ isOpen, onClose, navigationItems, currentPath }) {
               <motion.button
                 className="flex items-center justify-between w-full p-4 rounded-lg transition-all duration-200"
                 style={{ backgroundColor: 'rgba(var(--glass-bg), 0.1)' }}
-                onClick={toggleTheme}
+                onClick={() => {
+                  const newTheme = isLight ? 'dark' : 'light';
+                  toggleTheme();
+                }}
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
                 initial={{ opacity: 0, y: 20 }}

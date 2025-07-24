@@ -17,6 +17,9 @@ import {
 import { calculateAge } from '../utils/blogParser'
 import { useTheme } from '../contexts/ThemeContext'
 
+// Import profile image
+import profileImage from '../assets/profile.png'
+
 // Hero Section Component
 function HeroSection({ data }) {
   if (!data) return null
@@ -24,96 +27,240 @@ function HeroSection({ data }) {
   const { isLight } = useTheme()
   const age = calculateAge(data.birth)
   
+  // State for image loading
+  const [imageError, setImageError] = React.useState(false)
+  const [imageSrc, setImageSrc] = React.useState(profileImage)
+  
+  // Try multiple image sources
+  React.useEffect(() => {
+    const tryImageSources = async () => {
+      const sources = [
+        profileImage,
+        '/images/profile.png',
+        './images/profile.png',
+        '/public/images/profile.png'
+      ]
+      
+      for (const src of sources) {
+        try {
+          const img = new Image()
+          img.onload = () => {
+            setImageSrc(src)
+            setImageError(false)
+            return
+          }
+          img.onerror = () => {
+            console.log('Failed to load image from:', src)
+          }
+          img.src = src
+          await new Promise(resolve => {
+            img.onload = resolve
+            img.onerror = resolve
+          })
+          if (img.complete && img.naturalWidth > 0) {
+            setImageSrc(src)
+            setImageError(false)
+            break
+          }
+        } catch (error) {
+          console.log('Error trying source:', src, error)
+        }
+      }
+    }
+    
+    tryImageSources()
+  }, [])
+
   return (
-    <section className="min-h-screen flex items-center justify-center relative">
-      <div className="container-custom text-center">
+    <section className="h-screen relative overflow-hidden flex items-center justify-center">
+      <div className="container-custom relative z-10 text-center">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="max-w-4xl mx-auto"
+          transition={{ duration: 1 }}
         >
-          {/* Name and Title */}
-          <motion.h1
-            className={`text-5xl sm:text-6xl lg:text-7xl font-light mb-6 ${isLight ? '' : 'text-shadow'}`}
-            style={{ color: 'rgb(var(--text-primary))' }}
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
+          {/* Profile Image */}
+          <motion.div
+            className="mb-8"
+            initial={{ opacity: 0, scale: 0.5 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 1, delay: 0.1, type: "spring", stiffness: 200 }}
           >
-            <span className="text-gradient">{data.name}</span>
-          </motion.h1>
-          
-          <motion.p
-            className={`text-xl sm:text-2xl mb-8 font-light ${isLight ? '' : 'text-shadow-sm'}`}
-            style={{ color: 'rgb(var(--text-secondary))' }}
+            <div className="relative inline-block">
+              {/* Animated ring around image */}
+              <motion.div
+                className="absolute inset-0 rounded-full"
+                style={{
+                  background: `conic-gradient(from 0deg, #60a5fa, #a78bfa, #f472b6, #60a5fa)`,
+                  padding: '4px',
+                }}
+                animate={{ rotate: 360 }}
+                transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
+              >
+                <div className="w-full h-full rounded-full" style={{ background: 'rgb(var(--bg-primary))' }} />
+              </motion.div>
+              
+              {/* Profile Image */}
+              {!imageError ? (
+                <motion.img
+                  src={imageSrc}
+                  alt="Mithila Prabashwara"
+                  className="relative w-32 h-32 sm:w-40 sm:h-40 rounded-full object-cover shadow-2xl"
+                  style={{
+                    border: '4px solid rgb(var(--bg-primary))',
+                    boxShadow: isLight 
+                      ? '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)' 
+                      : '0 20px 25px -5px rgba(0, 0, 0, 0.3), 0 10px 10px -5px rgba(0, 0, 0, 0.1), 0 0 40px rgba(96, 165, 250, 0.1)'
+                  }}
+                  whileHover={{ scale: 1.05 }}
+                  transition={{ duration: 0.3 }}
+                  onError={(e) => {
+                    console.log('Image failed to load:', e.target.src);
+                    setImageError(true)
+                  }}
+                  onLoad={() => console.log('Image loaded successfully')}
+                />
+              ) : (
+                <motion.div
+                  className="relative w-32 h-32 sm:w-40 sm:h-40 rounded-full shadow-2xl flex items-center justify-center text-white font-bold text-2xl sm:text-3xl"
+                  style={{
+                    background: 'linear-gradient(135deg, #60a5fa 0%, #a78bfa 50%, #f472b6 100%)',
+                    border: '4px solid rgb(var(--bg-primary))',
+                    boxShadow: isLight 
+                      ? '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)' 
+                      : '0 20px 25px -5px rgba(0, 0, 0, 0.3), 0 10px 10px -5px rgba(0, 0, 0, 0.1), 0 0 40px rgba(96, 165, 250, 0.1)'
+                  }}
+                  whileHover={{ scale: 1.05 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  MP
+                </motion.div>
+              )}
+              
+              {/* Status indicator */}
+              <motion.div
+                className="absolute bottom-2 right-2 w-8 h-8 bg-green-500 rounded-full flex items-center justify-center shadow-lg"
+                initial={{ scale: 0 }}
+                animate={{ scale: 1 }}
+                transition={{ duration: 0.5, delay: 1.2 }}
+              >
+                <motion.div
+                  className="w-4 h-4 bg-white rounded-full"
+                  animate={{ scale: [1, 1.2, 1] }}
+                  transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                />
+              </motion.div>
+            </div>
+          </motion.div>
+
+          {/* Name and Title */}
+          <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
+            className="mb-6"
           >
-            {data.title}
-          </motion.p>
-          
-          {/* Basic Info */}
-          <motion.div
-            className="flex flex-wrap items-center justify-center gap-6 mb-12"
-            style={{ color: 'rgb(var(--text-muted))' }}
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.6 }}
-          >
-            <div className="flex items-center gap-2">
-              <MapPin className="w-4 h-4" />
-              <span>{data.location?.city}, {data.location?.country}</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <Calendar className="w-4 h-4" />
-              <span>{age} years old</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <Mail className="w-4 h-4" />
-              <a 
-                href={`mailto:${data.email}`}
-                className="transition-colors"
-                style={{ color: 'rgb(var(--text-muted))' }}
-                onMouseEnter={(e) => e.target.style.color = 'rgb(0, 122, 255)'}
-                onMouseLeave={(e) => e.target.style.color = 'rgb(var(--text-muted))'}
-              >
-                {data.email}
-              </a>
-            </div>
+            <motion.h1
+              className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold mb-4"
+              style={{
+                background: isLight 
+                  ? 'linear-gradient(135deg, #1e40af 0%, #7c3aed 50%, #ec4899 100%)'
+                  : 'linear-gradient(135deg, #60a5fa 0%, #a78bfa 50%, #f472b6 100%)',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                backgroundClip: 'text',
+                color: isLight ? '#1e40af' : '#60a5fa' // fallback for browsers that don't support background-clip
+              }}
+            >
+              {data.name}
+            </motion.h1>
+            
+            <motion.h2
+              className="text-lg sm:text-xl lg:text-2xl font-light mb-4"
+              style={{ color: 'rgb(var(--text-secondary))' }}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.6 }}
+            >
+              {data.title}
+            </motion.h2>
+            
+            <motion.p
+              className="text-base sm:text-lg max-w-2xl mx-auto leading-relaxed"
+              style={{ color: 'rgb(var(--text-muted))' }}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.8 }}
+            >
+              Transforming ideas into digital reality with passion and precision. 
+              Welcome to my digital space! ✨
+            </motion.p>
           </motion.div>
-          
-          {/* CTA Buttons */}
+
+          {/* Quick Info Cards */}
           <motion.div
-            className="flex flex-wrap items-center justify-center gap-4"
-            initial={{ opacity: 0, y: 30 }}
+            className="flex flex-wrap justify-center gap-4 mb-8"
+            initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.8 }}
+            transition={{ duration: 0.8, delay: 1 }}
+          >
+            {[
+              { icon: <MapPin className="w-4 h-4" />, text: `${data.location?.city}, ${data.location?.country}` },
+              { icon: <Calendar className="w-4 h-4" />, text: `${age} years old` },
+              { icon: <Mail className="w-4 h-4" />, text: "Available for work" }
+            ].map((item, index) => (
+              <motion.div
+                key={index}
+                className="flex items-center gap-2 px-4 py-2 rounded-full glass-morphism"
+                style={{ color: 'rgb(var(--text-muted))' }}
+                whileHover={{ scale: 1.05, y: -2 }}
+                transition={{ type: "spring", stiffness: 400 }}
+              >
+                {item.icon}
+                <span className="text-sm font-medium">{item.text}</span>
+              </motion.div>
+            ))}
+          </motion.div>
+
+          {/* Action Buttons */}
+          <motion.div
+            className="flex flex-wrap justify-center gap-4"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 1.2 }}
           >
             {data.cv && (
-              <a
+              <motion.a
                 href={data.cv}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="apple-button-primary inline-flex items-center gap-2"
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-full font-semibold text-white shadow-lg transition-all duration-300"
+                style={{
+                  background: isLight 
+                    ? 'linear-gradient(135deg, #1e40af 0%, #7c3aed 100%)'
+                    : 'linear-gradient(135deg, #60a5fa 0%, #a78bfa 100%)',
+                }}
+                whileHover={{ scale: 1.05, y: -2 }}
+                whileTap={{ scale: 0.95 }}
               >
                 <Download className="w-4 h-4" />
                 Download CV
-              </a>
+              </motion.a>
             )}
             
-            {data.certifications && (
-              <a
-                href={data.certifications}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="apple-button-secondary inline-flex items-center gap-2"
-              >
-                <ExternalLink className="w-4 h-4" />
-                View Certifications
-              </a>
-            )}
+            <motion.a
+              href={`mailto:${data.email}`}
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-full font-semibold border-2 transition-all duration-300"
+              style={{
+                borderColor: isLight ? '#1e40af' : '#60a5fa',
+                color: isLight ? '#1e40af' : '#60a5fa'
+              }}
+              whileHover={{ scale: 1.05, y: -2 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <Mail className="w-4 h-4" />
+              Get In Touch
+            </motion.a>
           </motion.div>
         </motion.div>
       </div>
@@ -517,14 +664,30 @@ function AvailabilitySection({ availability }) {
 export default function Home({ data }) {
   if (!data) {
     return (
-      <div className="min-h-screen flex items-center justify-center">
-        <p className="text-xl text-gray-400">Loading portfolio data...</p>
+      <div className="min-h-screen flex items-center justify-center relative">
+        <div className="text-center">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.8, repeat: Infinity, repeatType: "reverse" }}
+            className="w-12 h-12 mx-auto mb-6 rounded-full bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400"
+          />
+          <motion.p 
+            className="text-xl font-light"
+            style={{ color: 'rgb(var(--text-secondary))' }}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+          >
+            Loading portfolio data...
+          </motion.p>
+        </div>
       </div>
     )
   }
   
   return (
-    <main className="pt-20">
+    <main>
       <HeroSection data={data} />
       <SkillsEducationSection skills={data.skills} education={data.education} />
       <InterestsConnectSection interests={data.interests} social={data.social} />

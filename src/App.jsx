@@ -17,9 +17,6 @@ import Projects from './pages/Projects'
 import Blogs from './pages/Blogs'
 import BlogPost from './pages/BlogPost'
 
-// Admin
-import AdminDashboard from './admin/AdminDashboard'
-
 // Utils
 import { XMLParser } from './utils/xmlParser'
 import { fetchBlogs } from './utils/blogParser'
@@ -31,9 +28,6 @@ function App() {
   const [config, setConfig] = useState(null)
   const [error, setError] = useState(null)
   const location = useLocation()
-
-  // Check if we're on admin page
-  const isAdminPage = location.pathname.startsWith('/admin')
 
   useEffect(() => {
     const loadData = async () => {
@@ -65,8 +59,8 @@ function App() {
     loadData()
   }, [])
 
-  // Check for maintenance mode (but allow admin access)
-  if (config?.siteSettings?.maintenanceMode?.enabled && !isAdminPage) {
+  // Check for maintenance mode
+  if (config?.siteSettings?.maintenanceMode?.enabled) {
     return (
       <ThemeProvider>
         <MaintenancePage config={config} />
@@ -89,39 +83,17 @@ function App() {
     <ThemeProvider>
       <ErrorBoundary>
         <ScrollToTop />
-        {isAdminPage ? (
-          // Admin layout - no header, no background styling
-          <div className="min-h-screen">
+        {/* Main site layout - with header and styling */}
+        <div className="min-h-screen theme-transition relative overflow-hidden pt-20" style={{
+          background: 'rgb(var(--bg-primary))',
+          color: 'rgb(var(--text-primary))'
+        }}>
+          {/* Main Content */}
+          <div className="relative z-10">
+            <Header />
+            
             <AnimatePresence mode="wait">
               <Routes>
-                <Route 
-                  path="/admin" 
-                  element={
-                    <motion.div
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: -20 }}
-                      transition={{ duration: 0.5 }}
-                    >
-                      <AdminDashboard />
-                    </motion.div>
-                  } 
-                />
-              </Routes>
-            </AnimatePresence>
-          </div>
-        ) : (
-          // Main site layout - with header and styling
-          <div className="min-h-screen theme-transition relative overflow-hidden pt-20" style={{
-            background: 'rgb(var(--bg-primary))',
-            color: 'rgb(var(--text-primary))'
-          }}>
-            {/* Main Content */}
-            <div className="relative z-10">
-              <Header />
-              
-              <AnimatePresence mode="wait">
-                <Routes>
                   <Route 
                     path="/" 
                     element={
@@ -178,7 +150,6 @@ function App() {
               </AnimatePresence>
             </div>
           </div>
-        )}
       </ErrorBoundary>
     </ThemeProvider>
   )

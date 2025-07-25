@@ -102,6 +102,7 @@ export class XMLParser {
       name: this.getTextContent(project, 'name'),
       description: this.getTextContent(project, 'description'),
       technologies: this.parseTechnologies(project),
+      tools: this.parseTools(project),
       image: this.getTextContent(project, 'image') || null,
       preview: this.getTextContent(project, 'preview') || null,
       link: this.getTextContent(project, 'link'),
@@ -169,6 +170,15 @@ export class XMLParser {
     return Array.from(techElement.querySelectorAll('technology'))
       .map(tech => tech.textContent.trim())
       .filter(tech => tech.length > 0)
+  }
+
+  parseTools(project) {
+    const toolsElement = project.querySelector('tools')
+    if (!toolsElement) return []
+    
+    return Array.from(toolsElement.querySelectorAll('tool'))
+      .map(tool => tool.textContent.trim())
+      .filter(tool => tool.length > 0)
   }
 
   getTextContent(parent, selector) {

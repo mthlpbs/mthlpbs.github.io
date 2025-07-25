@@ -128,6 +128,32 @@ function ProjectCard({ project, index }) {
             </div>
           </div>
         )}
+
+        {/* Deployment Tools */}
+        {project.tools && project.tools.length > 0 && (
+          <div className="mb-6">
+            <h4 className="text-sm font-medium mb-3" style={{ color: 'rgb(var(--text-muted))' }}>Deployment & Tools</h4>
+            <div className="flex flex-wrap gap-2">
+              {project.tools.map((tool, toolIndex) => (
+                <motion.span
+                  key={tool}
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.3, delay: toolIndex * 0.05 }}
+                  viewport={{ once: true }}
+                  className="px-3 py-1 text-xs rounded-full transition-colors cursor-default"
+                  style={{
+                    backgroundColor: isLight ? 'rgba(34, 197, 94, 0.1)' : 'rgba(34, 197, 94, 0.2)',
+                    color: isLight ? '#15803d' : '#4ade80',
+                    border: isLight ? '1px solid rgba(34, 197, 94, 0.2)' : '1px solid rgba(34, 197, 94, 0.3)'
+                  }}
+                >
+                  {tool}
+                </motion.span>
+              ))}
+            </div>
+          </div>
+        )}
       </div>
     </motion.div>
   )

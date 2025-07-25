@@ -75,6 +75,10 @@
                 <technology>Java</technology>
                 <technology>SQL</technology>
             </technologies>
+            <tools>
+                <tool>Java Swing</tool>
+                <tool>Oracke JDBC</tool>
+            </tools>
             <image>https://github.com/mthlpbs/Library-Management-System/raw/main/screenshots/Dashboard.png</image>
             <preview></preview>
             <link>https://github.com/mthlpbs/Library-Management-System</link>
@@ -85,7 +89,12 @@
             <technologies>
                 <technology>Vibe Coding</technology>
             </technologies>
-            <image></image>
+            <tools>
+                <tool>GitHub Pages</tool>
+                <tool>GitHub Actions</tool>
+                <tool>Github Copilot</tool>
+            </tools>
+            <image>https://screenshotapi.net/_next/image?url=https%3A%2F%2Fs3.eu-central-2.wasabisys.com%2Fw.storage.screenshotapi.net%2Fmthlpbs_github_io_6694169b6bd4.png&amp;w=1200&amp;q=75</image>
             <preview></preview>
             <link>https://github.com/mthlpbs/mthlpbs.github.io</link>
             <demo>https://mthlpbs.github.io</demo>
@@ -99,7 +108,12 @@
                 <technology>Javascript</technology>
                 <technology>PHP</technology>
                 <technology>MYSQL</technology>
+                <technology>Bootsrap</technology>
             </technologies>
+            <tools>
+                <tool>Apache Server</tool>
+                <tool>Git</tool>
+            </tools>
             <image></image>
             <preview></preview>
             <link>https://github.com/mthlpbs/Examgis</link>
@@ -114,11 +128,38 @@
                 <technology>Javascript</technology>
                 <technology>PHP</technology>
                 <technology>MYSQL</technology>
+                <technology>Bootsrap</technology>
             </technologies>
-            <image>https://github.com/mthlpbs/mthlpbs.github.io/blob/main/blob/images/projects/sola-chem.webp?raw=true</image>
+            <tools>
+                <tool>AlwaysData</tool>
+                <tool>Apache Server</tool>
+                <tool>Git</tool>
+                <tool>GitHub</tool>
+                <tool>Figma</tool>
+                <tool>Heidi-SQL</tool>
+                <tool>MySQL Workbench</tool>
+                <tool>GitHub Actions (ssh-action)</tool>
+                <tool>Cronjob</tool>
+            </tools>
+            <image>https://raw.githubusercontent.com/mthlpbs/mthlpbs.github.io/refs/heads/main/public/images/projects/sola-chem.webp</image>
             <preview></preview>
             <link>https://github.com/mthlpbs/sola-chemicals-ecommerce-platform</link>
             <demo>https://hashcoders.alwaysdata.net/</demo>
+        </project>
+        <project>
+            <name>Revamp UI Of eta.gov.lk (Sri Lanka ETA aka Electronic Travel Authorization)</name>
+            <description>This redesign project was undertaken as part of the Human-Computer Interaction (HCI) module assignment.</description>
+            <technologies>
+                <technology>UI/UX</technology>
+            </technologies>
+            <tools>
+                <tool>Figma</tool>
+                <tool>Balsamiq</tool>
+            </tools>
+            <image>https://raw.githubusercontent.com/mthlpbs/mthlpbs.github.io/refs/heads/main/public/images/projects/eta.webp</image>
+            <preview></preview>
+            <link></link>
+            <demo>https://www.figma.com/proto/92UimX6DEEHbG1NdupY8YI/HCI-Project---Revamp-the-UI-UX-of-eta.gov.lk?page-id=0%3A1&amp;node-id=2163-6&amp;p=f&amp;viewport=372%2C144%2C0.07&amp;t=mBSeyVj9euzuMBBl-1&amp;scaling=scale-down&amp;content-scaling=fixed&amp;starting-point-node-id=2163%3A6&amp;show-proto-sidebar=1</demo>
         </project>
     </projects>
     

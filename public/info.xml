@@ -73,7 +73,7 @@
             <description>A comprehensive library management system with a user-friendly graphical interface, offering all the essential features of a traditional library management solution for small scale libraries. Built with Java and featuring book cataloging, member management, and borrowing systems.</description>
             <technologies>
                 <technology>Java</technology>
-                <technology>SQL</technology>
+                <technology>MYSQL</technology>
             </technologies>
             <tools>
                 <tool>Java Swing</tool>

@@ -90,6 +90,7 @@
                 <technology>Vibe Coding</technology>
             </technologies>
             <tools>
+                <tool>Figma</tool>
                 <tool>GitHub Pages</tool>
                 <tool>GitHub Actions</tool>
                 <tool>Github Copilot</tool>
@@ -114,7 +115,7 @@
                 <tool>Apache Server</tool>
                 <tool>Git</tool>
             </tools>
-            <image></image>
+            <image>https://raw.githubusercontent.com/mthlpbs/mthlpbs.github.io/refs/heads/main/public/images/projects/examgis.jpg</image>
             <preview></preview>
             <link>https://github.com/mthlpbs/Examgis</link>
             <demo></demo>
@@ -160,6 +161,17 @@
             <preview></preview>
             <link></link>
             <demo>https://www.figma.com/proto/92UimX6DEEHbG1NdupY8YI/HCI-Project---Revamp-the-UI-UX-of-eta.gov.lk?page-id=0%3A1&amp;node-id=2163-6&amp;p=f&amp;viewport=372%2C144%2C0.07&amp;t=mBSeyVj9euzuMBBl-1&amp;scaling=scale-down&amp;content-scaling=fixed&amp;starting-point-node-id=2163%3A6&amp;show-proto-sidebar=1</demo>
+        </project>
+        <project>
+            <name>ALT Code Gboard Dictionary</name>
+            <description>This repository provides a collection of alt codes for Gboard, the Google keyboard app for Android and iOS devices. Alt codes are keyboard shortcuts that enable you to input special characters and symbols that are not present on the standard keyboard layout.</description>
+            <tools>
+                <tool>Gboard</tool>
+            </tools>
+            <image>https://raw.githubusercontent.com/mthlpbs/mthlpbs.github.io/refs/heads/main/public/images/projects/unicord.png</image>
+            <preview>https://raw.githubusercontent.com/mthlpbs/ALT-Code-Gboard-Dictionary/refs/heads/main/dictionary.txt</preview>
+            <link>https://github.com/mthlpbs/ALT-Code-Gboard-Dictionary</link>
+            <demo></demo>
         </project>
     </projects>
     

@@ -108,7 +108,7 @@
         <xs:sequence>
             <xs:element name="name" type="xs:string"/>
             <xs:element name="description" type="xs:string"/>
-            <xs:element name="technologies" type="tns:TechnologiesType"/>
+            <xs:element name="technologies" type="tns:TechnologiesType" minOccurs="0"/>
             <xs:element name="tools" type="tns:ToolsType" minOccurs="0"/>
             <xs:element name="image" type="xs:anyURI" minOccurs="0"/>
             <xs:element name="preview" type="xs:anyURI" minOccurs="0"/>
